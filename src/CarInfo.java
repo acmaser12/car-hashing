@@ -14,7 +14,7 @@ public class CarInfo {
     private String licenseState;
     private String licensePlate;
 
-    public CarInfo(String make, String type, String owner, String licenseState, String licensePlate) {
+    CarInfo(String make, String type, String owner, String licenseState, String licensePlate) {
         this.make = make;
         this.type = type;
         this.owner = owner;

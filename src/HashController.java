@@ -1,3 +1,5 @@
+import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Random;
 
 public class HashController {
@@ -14,10 +16,15 @@ public class HashController {
     }
 
     private void start() {
+        MyHashtable<CarInfo> table = new MyHashtable<>(100);
         for (int i = 0; i < 100; i++) {
             CarInfo car = generateCar();
-            System.out.println(i + ":");
-            System.out.println(car.toString());
+            table.add(car);
+        }
+        Iterator<CarInfo> iterator = table.iterator();
+        for (int j = 0; j < table.size(); j++) {
+            System.out.println("Bucket " + j + ": ");
+            System.out.println("\t" + iterator.next().);
         }
     }
 
@@ -37,8 +44,8 @@ public class HashController {
             String alphanumerics = "abcdefghijklmnopqrstuvwxyz0123456789";
             plateBuilder.append(alphanumerics.charAt(random.nextInt(alphanumerics.length())));
         }
-        String plate = plateBuilder.toString();
+        String plate = plateBuilder.toString().toUpperCase();
 
-        return new CarInfo(make, type, firstName + " " + lastName, state, plate.toUpperCase());
+        return new CarInfo(make, type, firstName + " " + lastName, state, plate);
     }
 }
